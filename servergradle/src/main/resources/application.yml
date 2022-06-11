@@ -1,0 +1,29 @@
+micronaut:
+  application:
+    name: servergradle
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
+datasources:
+  default:
+    url: jdbc:postgresql://45.10.244.15:55532/work100011
+    driverClassName: org.postgresql.Driver
+    username: work100011
+    password: 'oFbmYhl|B6JzX9OcFayS'
+    schema-generate: CREATE_DROP
+    dialect: POSTGRES
+
+jpa:
+  default:
+    entity-scan:
+      packages: "com.example.entity"
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+
