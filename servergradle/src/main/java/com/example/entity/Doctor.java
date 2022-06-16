@@ -1,14 +1,12 @@
 package com.example.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "patient")
-public class Patient {
+@Table(name = "doctor")
+public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -23,51 +21,13 @@ public class Patient {
     @Column(name = "middle_name", length = 50)
     private String middleName;
 
-    @Column(name = "email", nullable = false, length = 50)
-    private String email;
-
     @Column(name = "login", nullable = false, length = 50)
     private String login;
 
-    @Column(name = "password", nullable = false, length = 64)
+    @Column(name = "password", length = 64)
     private String password;
 
-    @Column(name = "birthdate", nullable = false)
-    private LocalDate birthdate;
-
-    @Column(name = "sex", nullable = false, length = 1)
-    private String sex;
-
-    public Patient(String secondName, String firstName, String middleName,
-                   String email, String login, String password,
-                   LocalDate birthdate, String sex) {
-        this.secondName = secondName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.email = email;
-        this.login = login;
-        this.password = password;
-        this.birthdate = birthdate;
-        this.sex = sex;
-    }
-    public Patient() {
-
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
+    public Doctor() {
     }
 
     public String getPassword() {
@@ -84,14 +44,6 @@ public class Patient {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getMiddleName() {

@@ -12,9 +12,19 @@ public class PatientModel {
     private String birthdate;
     private String email;
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    private String sex;
+
     public PatientModel(String secondName, String firstName,
-                        String middleName, String login,
-                        String password, String birthdate, String email) {
+                        String middleName, String login, String password,
+                        String birthdate, String email, String sex) {
         this.secondName = secondName;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -22,6 +32,7 @@ public class PatientModel {
         this.password = password;
         this.birthdate = birthdate;
         this.email = email;
+        this.sex = sex;
     }
 
     public PatientModel() {

@@ -1,4 +1,14 @@
 micronaut:
+  server:
+    cors:
+      enabled: true
+      web:
+        allowedOrigins:
+          http://localhost:4200/
+        allowedMethods:
+          - POST
+          - PUT
+          - GET
   application:
     name: servergradle
   security:

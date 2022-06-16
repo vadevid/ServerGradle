@@ -10,4 +10,6 @@ import java.util.List;
 public interface PatientRepository extends CrudRepository<Patient, Integer> {
     @Override
     List<Patient> findAll();
+    Patient getByLogin(String login);
+    Patient getById(String id);
 }
