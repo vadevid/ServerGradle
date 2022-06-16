@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.entity.Patient;
+import com.example.models.PatientInfoModel;
 import com.example.models.PatientModel;
 import com.example.repository.PatientRepository;
 import com.example.service.PatientService;
@@ -35,5 +36,10 @@ public class PatientController {
     @Post(value = "/login", consumes = MediaType.APPLICATION_JSON)
     public String LoginPatient(@Body @Valid Patient patient) {
         return patientService.login(patient);
+    }
+
+    @Post(value = "/info", consumes = MediaType.APPLICATION_JSON)
+    public PatientInfoModel PatientIfo(@Body @Valid Patient patient) {
+        return patientService.patientinfo(patient);
     }
 }

@@ -1,10 +1,12 @@
 package com.example.service;
 
+import com.example.entity.DefaultValue;
 import com.example.entity.Patient;
+import com.example.models.PatientInfoModel;
 import com.example.models.PatientModel;
+import com.example.repository.DefaultValueRepository;
 import com.example.repository.PatientRepository;
 import com.google.common.hash.Hashing;
-import io.netty.util.HashingStrategy;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
@@ -19,6 +21,8 @@ public class PatientService {
 
     @Inject
     PatientRepository patientRepository;
+    @Inject
+    DefaultValueRepository defaultValueRepository;
 
     public boolean save(PatientModel patient) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -38,6 +42,19 @@ public class PatientService {
             } else return  "1";
         } catch (Exception e) {
             return "2";
+        }
+    }
+    public PatientInfoModel patientinfo(Patient patient) {
+        try {
+            Patient tmp = patientRepository.getById(patient.getId());
+            DefaultValue defaultValue = defaultValueRepository.getById(tmp.getId());
+            PatientInfoModel patientInfo = new PatientInfoModel(tmp.getFIO(),
+                    tmp.getAge().toString(), tmp.getSex(), String.valueOf(defaultValue.getGrowth()),
+                    String.valueOf(defaultValue.getWeight()), String.valueOf(defaultValue.getMassIndex()));
+            return patientInfo;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

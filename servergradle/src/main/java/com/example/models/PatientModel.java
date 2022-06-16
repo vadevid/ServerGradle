@@ -11,6 +11,7 @@ public class PatientModel {
     private String password;
     private String birthdate;
     private String email;
+    private String sex;
 
     public String getSex() {
         return sex;
@@ -20,7 +21,6 @@ public class PatientModel {
         this.sex = sex;
     }
 
-    private String sex;
 
     public PatientModel(String secondName, String firstName,
                         String middleName, String login, String password,

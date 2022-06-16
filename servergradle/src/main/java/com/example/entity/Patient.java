@@ -2,8 +2,10 @@ package com.example.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -53,6 +55,19 @@ public class Patient {
     public Patient() {
 
     }
+
+    public String getFIO() {
+        return (secondName + " " + firstName + " " + middleName);
+    }
+
+    public Patient(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getAge() {
+        return Period.between(birthdate, LocalDate.now()).getYears();
+    }
+
 
     public String getSex() {
         return sex;

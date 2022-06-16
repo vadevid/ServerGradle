@@ -21,10 +21,10 @@ micronaut:
               secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
 datasources:
   default:
-    url: jdbc:postgresql://45.10.244.15:55532/work100011
+    url: jdbc:postgresql://localhost:5432/medical_dictionary
     driverClassName: org.postgresql.Driver
-    username: work100011
-    password: 'oFbmYhl|B6JzX9OcFayS'
+    username: vadevid
+    password: 'dfg234hj'
     schema-generate: CREATE_DROP
     dialect: POSTGRES
 
