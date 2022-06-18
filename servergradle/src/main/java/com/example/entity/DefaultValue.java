@@ -10,6 +10,9 @@ public class DefaultValue {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    public DefaultValue() {
+    }
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
@@ -19,6 +22,12 @@ public class DefaultValue {
 
     @Column(name = "weight")
     private double weight;
+
+    public DefaultValue(Patient patient, double growth, double weight) {
+        this.patient = patient;
+        this.growth = growth;
+        this.weight = weight;
+    }
 
     public double getMassIndex() {
         return (this.weight / (this.growth/100 * this.growth/100));

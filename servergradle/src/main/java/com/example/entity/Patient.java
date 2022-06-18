@@ -56,12 +56,12 @@ public class Patient {
 
     }
 
-    public String getFIO() {
-        return (secondName + " " + firstName + " " + middleName);
-    }
-
     public Patient(Integer id) {
         this.id = id;
+    }
+
+    public String getFIO() {
+        return (secondName + " " + firstName + " " + middleName);
     }
 
     public Integer getAge() {

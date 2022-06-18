@@ -27,6 +27,24 @@ public class Doctor {
     @Column(name = "password", length = 64)
     private String password;
 
+    @Column(name = "type", length = 50)
+    private String type;
+
+    public Doctor(Integer id, String secondName, String firstName, String middleName, String login, String password, String type) {
+        this.id = id;
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.login = login;
+        this.password = password;
+        this.type = type;
+    }
+
+
+    public String getFIO() {
+        return (secondName + " " + firstName + " " + middleName);
+    }
+
     public Doctor() {
     }
 
@@ -76,5 +94,13 @@ public class Doctor {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

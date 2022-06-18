@@ -30,7 +30,9 @@ public class PatientService {
         Patient repoPatient = new Patient(patient.getSecondName(), patient.getFirstName(), patient.getMiddleName(),
                 patient.getEmail(), patient.getLogin(), Hashing.sha256().hashString(patient.getPassword(), StandardCharsets.UTF_8).toString(),
                 LocalDate.parse(patient.getBirthdate(), formatter),patient.getSex());
+        DefaultValue defaultValue = new DefaultValue(repoPatient, 0, 0);
         patientRepository.save(repoPatient);
+        defaultValueRepository.save(defaultValue);
         return true;
     }
 
@@ -47,7 +49,7 @@ public class PatientService {
     public PatientInfoModel patientinfo(Patient patient) {
         try {
             Patient tmp = patientRepository.getById(patient.getId());
-            DefaultValue defaultValue = defaultValueRepository.getById(tmp.getId());
+            DefaultValue defaultValue = defaultValueRepository.findFirstByPatientOrderByIdDesc(tmp);
             PatientInfoModel patientInfo = new PatientInfoModel(tmp.getFIO(),
                     tmp.getAge().toString(), tmp.getSex(), String.valueOf(defaultValue.getGrowth()),
                     String.valueOf(defaultValue.getWeight()), String.valueOf(defaultValue.getMassIndex()));

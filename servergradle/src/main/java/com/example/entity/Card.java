@@ -15,16 +15,31 @@ public class Card {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "doctor_id", nullable = false)
     private Doctor doctor;
 
     @Column(name = "type", nullable = false, length = 50)
     private String type;
+
+    public Card(Integer id, String name, Patient patient, Doctor doctor, String type) {
+        this.id = id;
+        this.name = name;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.type = type;
+    }
+
+    public Card() {
+    }
+
+    public Card(Integer id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;

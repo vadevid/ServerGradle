@@ -10,6 +10,7 @@ public class PatientInfoModel {
     private String sex;
     private String growth;
     private String weight;
+    private String mass_index;
 
     public String getFio() {
         return fio;
@@ -19,7 +20,6 @@ public class PatientInfoModel {
         this.fio = fio;
     }
 
-    private String mass_index;
 
     public PatientInfoModel(String fio, String age, String sex, String growth, String weight, String mass_index) {
         this.fio = fio;
