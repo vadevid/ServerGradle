@@ -2,8 +2,11 @@ package com.example.service;
 
 
 import com.example.entity.Card;
+import com.example.entity.CardAnswer;
+import com.example.models.CardAnswerModel;
 import com.example.models.CardInfoModel;
 import com.example.models.CardModel;
+import com.example.repository.CardAnswerRepository;
 import com.example.repository.CardRepository;
 import com.example.repository.DoctorRepository;
 import jakarta.inject.Inject;
@@ -18,6 +21,8 @@ public class CardService {
     CardRepository cardRepository;
     @Inject
     DoctorRepository doctorRepository;
+    @Inject
+    CardAnswerRepository cardAnswerRepository;
 
     public List<CardModel> findAllByPatientId(Integer id) {
         List<Card> listCards = cardRepository.findAllByPatientId(id);
@@ -33,5 +38,15 @@ public class CardService {
         Card card = cardRepository.getById(id);
         CardInfoModel returnedCard = new CardInfoModel(card.getId(), card.getName(), card.getDoctor(), card.getType());
         return returnedCard;
+    }
+
+    public List<CardAnswerModel> getAllAnswer(Integer id) {
+        List<CardAnswer> cardAnswers = cardAnswerRepository.findAllByCardIdOrderByAnswerDate(id);
+        List<CardAnswerModel> cardAnswerModels = new ArrayList<>();
+        for (CardAnswer cardAnswer: cardAnswers) {
+            cardAnswerModels.add(new CardAnswerModel(cardAnswer.getId(), cardAnswer.getCard().getName(),
+                    cardAnswer.getAnswer(), cardAnswer.getAnswerDate().toString()));
+        }
+        return cardAnswerModels;
     }
 }

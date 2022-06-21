@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "card_answer")
@@ -10,18 +11,29 @@ public class CardAnswer {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "card_id", nullable = false)
     private Card card;
 
     @Column(name = "answer")
-    private Integer answer;
+    private String answer;
+    
+    @Column(name = "answer_date")
+    private LocalDate answerDate;
 
-    public Integer getAnswer() {
+    public CardAnswer() {
+    }
+
+    public CardAnswer(Card card, String answer) {
+        this.card = card;
+        this.answer = answer;
+    }
+
+    public String  getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Integer answer) {
+    public void setAnswer(String  answer) {
         this.answer = answer;
     }
 
@@ -39,5 +51,13 @@ public class CardAnswer {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public LocalDate getAnswerDate() {
+        return answerDate;
+    }
+
+    public void setAnswerDate(LocalDate answerDate) {
+        this.answerDate = answerDate;
     }
 }

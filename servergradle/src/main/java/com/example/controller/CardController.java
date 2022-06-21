@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.entity.Card;
 import com.example.entity.Patient;
+import com.example.models.CardAnswerModel;
 import com.example.models.CardInfoModel;
 import com.example.models.CardModel;
 import com.example.repository.CardRepository;
@@ -36,4 +37,7 @@ public class CardController {
     public CardInfoModel getById(@Body @Valid Card card) {
         return cardService.getById(card.getId());
     }
+
+    @Post(value = "/getallanswer", consumes = MediaType.APPLICATION_JSON)
+    public List<CardAnswerModel> getAllAnswer(@Body Card card) { return cardService.getAllAnswer(card.getId()); }
 }
