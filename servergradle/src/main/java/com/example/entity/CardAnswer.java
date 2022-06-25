@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -19,7 +20,7 @@ public class CardAnswer {
     private String answer;
     
     @Column(name = "answer_date")
-    private LocalDate answerDate;
+    private LocalDate answerDate = LocalDate.now();
 
     public CardAnswer() {
     }

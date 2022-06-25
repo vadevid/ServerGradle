@@ -10,16 +10,25 @@ public class ContactingADoctor {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "doctor_id", nullable = false)
     private Doctor doctor;
 
     @Column(name = "text", nullable = false, length = 150)
     private String text;
+
+    public ContactingADoctor(Patient patient, Doctor doctor, String text) {
+        this.patient = patient;
+        this.doctor = doctor;
+        this.text = text;
+    }
+
+    public ContactingADoctor() {
+    }
 
     public String getText() {
         return text;

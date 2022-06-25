@@ -40,6 +40,11 @@ public class Doctor {
         this.type = type;
     }
 
+    public Doctor(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
 
     public String getFIO() {
         return (secondName + " " + firstName + " " + middleName);

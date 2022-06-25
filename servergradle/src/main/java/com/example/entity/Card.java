@@ -25,6 +25,10 @@ public class Card {
 
     @Column(name = "type", nullable = false, length = 50)
     private String type;
+    @Column(name = "min_value")
+    private Double minValue;
+    @Column(name = "max_value")
+    private Double maxValue;
 
     public Card(Integer id, String name, Patient patient, Doctor doctor, String type) {
         this.id = id;
@@ -39,6 +43,25 @@ public class Card {
 
     public Card(Integer id) {
         this.id = id;
+    }
+
+    public Card(Integer id, String name, Patient patient, Doctor doctor, String type, Double minValue, Double maxValue) {
+        this.id = id;
+        this.name = name;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.type = type;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+    }
+
+    public Card(String name, Patient patient, Doctor doctor, String type, Double minValue, Double maxValue) {
+        this.name = name;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.type = type;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
     }
 
     public String getType() {
@@ -79,5 +102,21 @@ public class Card {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Double getMinValue() {
+        return minValue;
+    }
+
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
+
+    public Double getMaxValue() {
+        return maxValue;
+    }
+
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
     }
 }

@@ -1,26 +1,19 @@
 package com.example.models;
 
-import com.example.entity.Doctor;
-import com.example.entity.Patient;
 import io.micronaut.core.annotation.Introspected;
 
 @Introspected
-public class CardInfoModel {
+public class DoctorCardModel {
     Integer id;
     String name;
-    Doctor doctor;
-    Patient patient;
+    String patientName;
     String cardType;
 
-    public CardInfoModel(Integer id, String name, Doctor doctor, Patient patient, String cardType) {
+    public DoctorCardModel(Integer id, String name, String patientName, String cardType) {
         this.id = id;
         this.name = name;
-        this.doctor = doctor;
-        this.patient = patient;
+        this.patientName = patientName;
         this.cardType = cardType;
-    }
-
-    public CardInfoModel() {
     }
 
     public Integer getId() {
@@ -39,12 +32,12 @@ public class CardInfoModel {
         this.name = name;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public String getPatientName() {
+        return patientName;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
     public String getCardType() {
@@ -53,13 +46,5 @@ public class CardInfoModel {
 
     public void setCardType(String cardType) {
         this.cardType = cardType;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 }

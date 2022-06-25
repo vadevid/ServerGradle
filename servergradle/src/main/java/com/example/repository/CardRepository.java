@@ -10,4 +10,5 @@ import java.util.List;
 public interface CardRepository extends CrudRepository<Card, Integer > {
     List<Card> findAllByPatientId(Integer id);
     Card getById(Integer id);
+    List<Card> findAllByDoctorId(Integer id);
 }

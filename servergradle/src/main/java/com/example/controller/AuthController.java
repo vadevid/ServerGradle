@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.entity.Doctor;
 import com.example.service.AuthenticationService;
 import com.example.entity.Patient;
 import com.example.models.AnswerModel;
@@ -32,4 +33,7 @@ public class AuthController {
     public AnswerModel LoginPatient(@Body @Valid Patient patient) {
         return authenticationService.login(patient);
     }
+
+    @Post(value = "/logindoctor", consumes = MediaType.APPLICATION_JSON)
+    public AnswerModel LoginDoctor(@Body @Valid Doctor doctor) { return authenticationService.loginDoctor(doctor); }
 }

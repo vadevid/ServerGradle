@@ -5,12 +5,16 @@ public class CardAnswerModel {
     String valueName;
     String answer;
     String answerDate;
+    Double minValue;
+    Double maxValue;
 
-    public CardAnswerModel(Integer id, String valueName, String answer, String answerDate) {
+    public CardAnswerModel(Integer id, String valueName, String answer, String answerDate, Double minValue, Double maxValue) {
         this.id = id;
         this.valueName = valueName;
         this.answer = answer;
         this.answerDate = answerDate;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
     }
 
     public Integer getId() {
@@ -43,5 +47,21 @@ public class CardAnswerModel {
 
     public void setAnswerDate(String answerDate) {
         this.answerDate = answerDate;
+    }
+
+    public Double getMinValue() {
+        return minValue;
+    }
+
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
+
+    public Double getMaxValue() {
+        return maxValue;
+    }
+
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
     }
 }
