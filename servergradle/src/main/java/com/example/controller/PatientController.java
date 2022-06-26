@@ -45,17 +45,6 @@ public class PatientController {
     @Inject
     AuthenticationService authenticationService;
 
-    @Post("/list")
-    public List<Patient> getPatientList(@Header(AUTHORIZATION)String token) {
-        for (UserToken ut : tokenRepository.getUsersTokenList()) {
-            String userToken = ut.getUserToken();
-            Long l = Long.parseLong(authenticationService.DecodeTokenDate(token));
-            if (userToken.equals(token) || l > new Date().getTime()) {
-                return patientRepository.findAll();
-            }
-        }
-        return null;
-    }
 
     @Post(value = "/info", consumes = MediaType.APPLICATION_JSON)
     public PatientInfoModel PatientIfo(@Header(AUTHORIZATION)String token, @Body @Valid Patient patient) {
